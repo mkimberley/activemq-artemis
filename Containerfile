@@ -6,4 +6,5 @@ RUN dnf -y update && \
 COPY . .
 
 RUN  export MAVEN_OPTS="-Xms2048M -Xmx2048M" && \
-     mvn -T 4 -Prelease -DskipTests package
+     echo $MAVEN_OPTS && \
+     mvn -Prelease package -DskipTests -Drat.skip=true
